@@ -20,10 +20,11 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/admin/dashboard" element={<AdminDashboard/>} />
+          {/* <Route path="/admin/dashboard" element={<AdminDashboard/>} /> */}
+          <Route path="/admin/dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated} adminRoute={true} isAdmin={true}><AdminDashboard/></ProtectedRoute>} />
           <Route path="/login" element={<Login/>} />
           
-          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
+          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/myorders" element={<MyOrders/>} />
           </Route>
